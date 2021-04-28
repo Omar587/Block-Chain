@@ -1,0 +1,51 @@
+/*-------------------------------------------------------
+# Student's Name: Orest Dushkevich, Axel Nguyen, and Omar Mohamed
+# Assignment #3 Milestone 3
+# Lab Section: X02L and X01l
+# CMPUT 201
+# Instructor's Name: Nesrine Abbas
+*------------------------------------------------------*/
+
+Final design desisions:
+
+- We used one global variable modBuffer this was initialized as an array of fixed length
+    Transaction modBuffer[MXTXNUM];
+    the reason for this was that it will make the program simpler to code at a negligible cost of ussing more memory
+    because of this the Block will always contain MXTXNUM (64) transactions but to identify invalid transactions they have
+    a timestamp of 0xFFFFFF
+
+- we attempted to keep as many functions out of peep.c  as posible so that the operation of blockChain.c and peepEditor.c 
+    are not as obvious
+
+Cohesion:
+    blockChain.c this file has a HIGH cohesion as it contains only functions that deal with the blockchain 
+    it does not do anything with modifing the peep it only will only read whats onthe blockchain or write a modBuffer to the blockchain
+
+    peepEditor.c this file only deals with editing a peep and it writes those files to a block blockChain
+
+    peep.c is the interface with the user from the comandline and is there mainly to obfuscate what blockChain.c and peepEditor.c do
+
+
+coupling:
+    peep.c only calls only one function from peepEditor.c to keep coupling between the two modules LOW 
+
+    peep.c calls on a few functions from blockChain.c to keep coupling between the two modules LOW and 
+    any manipulations are kept to a minimum inside the peep.c to help improve the coupling an cohesion
+
+    there is some coupling between blockChain.c and peepEditor.c, we've tried to keep this to an absolute
+    minimum by only sharing structures and macros between the two modules. the modules do not call on 
+    each others functions and if any data needs to be passsed between the two functions it is done through 
+    peep.c
+
+- If the user enters 64 or more transactions the program will automatically write the modBuffer to the file
+    and append a new block purge the modBuffer and then without the user knowing will open up a new peep editing session
+
+-  if the user has less than 64 transactions in a session when they exit the editior the modBuffer will then
+    be filled with invalid transactions that are defined with a timestamp of 0xFFFFFF
+
+- the merkle tree will hash the entire modbuffer which will also include the invalid trnsactions
+
+
+
+
+
