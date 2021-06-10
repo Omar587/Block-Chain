@@ -1,6 +1,4 @@
 
-# Student's Name: Orest Dushkevich, Axel Nguyen, and Omar Mohamed
-
 
 peep -c [fileName] - to create (by invoking the editor) a new peep
 peep -e [fileName] - to edit an existing peep
