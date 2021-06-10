@@ -1,9 +1,5 @@
 /*-------------------------------------------------------
 # Student's Name: Orest Dushkevich, Axel Nguyen, and Omar Mohamed
-# Assignment #3 Milestone 3
-# Lab Section: X02L and X01l
-# CMPUT 201
-# Instructor's Name: Nesrine Abbas
 *------------------------------------------------------*/
 
 #include "blockChain.h"
